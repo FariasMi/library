@@ -39,3 +39,12 @@ addBookToLibrary(book2);
 
 displayBooks();
 
+/*parte do dom */
+function openAddBookForm(){
+    
+    document.getElementsByClassName('form-area')[0].style.display = 'block';
+
+}
+
+    document.getElementById('add-book').addEventListener('click',openAddBookForm);
+    

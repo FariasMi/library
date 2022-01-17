@@ -6,6 +6,9 @@
     font-size: 15px;
    
 }
+html{
+    scroll-behavior: smooth;
+}
 body{
     background: linear-gradient(#9D50BB,#6E48AA,#4BC0C8);
     background-attachment: fixed;
@@ -37,10 +40,10 @@ header{
     
 }
 .form-area form{
- width: 80%;
- height: 400px; 
- margin: 0px auto; 
- margin-top: 50px;
+    width: 80%;
+    height: 400px; 
+    margin: 0px auto; 
+    margin-top: 50px;
 
 }
 
@@ -74,33 +77,50 @@ header{
     margin-left: -110px;
 
 }
-form .btn{
-    margin-left: 20px;
-    width: 80%;
-    height: 60px;
+
     
-}
-
-.btn:hover{
-    color : #ffffff;
-    box-shadow: 5px 5px 30px rgba(0,0,0,0.5);
-    
-}
-
-#add-book{
-    position: relative;
-    width: 80px;
-    height: 100px;
-    border-radius: 50%;
-    margin: 200px 500px 150px;
-}
-
 .btn{
     outline: none;
     border:none;
-    border-radius: 10px;
     background: rgba(255,255,255,0.001);
-    box-shadow: 0 25px 45px rgba(0,0,0,0.5);
     cursor: pointer;
+}
 
+#add-form{
+    margin-left: 20px;
+    width: 80%;
+    height: 60px;
+    border-radius: 10px;
+}
+
+.close{
+    position:absolute;
+    height: 2rem;
+    width: 2rem;
+    background: rgba(255,255,255,0.001);
+    top:0;
+    right:0;
+    color:#C70039 ;
+    font-size:2rem;
+    font-weight: 200;
+}
+
+
+#add-book{
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    bottom:20px;
+    right: 50px;
+    
+}
+
+#ad-form,#add-book{
+    box-shadow: 0 25px 45px rgba(0,0,0,0.5);
+}
+
+#add-form:hover{
+    color : #ffffff;
+    box-shadow: 5px 5px 30px rgba(0,0,0,0.5);
 }

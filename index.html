@@ -4,20 +4,24 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="stylesheet" href="style.css">
   <title>Library</title>
 </head>
 <body>
   <header>
-   
-      <h1>Library</h1> 
-      <button id="add-book"class="btn">+</button>
- 
+         <h1>Library</h1> 
   </header>
+  <section>
+    <button id="add-book"class="btn">
+      <i class="fas fa-plus"></i>
+    </button>
+  </section>
   <main>
     <section>
       <div class="form-area">
-        <form id="addBook" action="" >
+        <form id="book-form" action="" >
+         <button class ="close btn">x</button>
           <input type="text" id="title" name="title" placeholder="Title">
          <input type="text" id="author" name="author" placeholder="Author">
           <input type="number" min= 0 id="pages" name="pages" placeholder="Pages">
@@ -25,7 +29,7 @@
             <label for="read">Mark as Read</label>
             <input type="checkbox" id=read name="read" checked>
           </div>
-          <button  class="btn" type="submit" form="form" id="addBtn">Add</button>
+          <button  class="btn" type="submit" form="form" id="add-form">Add</button>
         </form>
       </div>
     </section>
