@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
   <title>Library</title>
 </head>
 <body>
@@ -19,21 +20,25 @@
   </section>
   <main>
     <section>
+      
+    </section>
+    <section>
       <div class="form-area">
+        <button id="close-form" class ="close btn">x</button>
+        <div class="error"></div>
         <form id="book-form" action="" >
-         <button class ="close btn">x</button>
-          <input type="text" id="title" name="title" placeholder="Title">
-         <input type="text" id="author" name="author" placeholder="Author">
-          <input type="number" min= 0 id="pages" name="pages" placeholder="Pages">
+          <input type="text" id="title" name="title" placeholder="Title" required />
+          <input type="text" id="author" name="author" placeholder="Author" required />
+          <input type="number" min= 0 id="pages" name="pages" placeholder="Pages" required />
           <div class="check-read">
             <label for="read">Mark as Read</label>
-            <input type="checkbox" id=read name="read" checked>
+            <input type="checkbox" id=read name="read" unchecked>
           </div>
           <button  class="btn" type="submit" form="form" id="add-form">Add</button>
         </form>
       </div>
     </section>
   </main>
-    <script src="script.js"></script>
+    
 </body>
 </html>
