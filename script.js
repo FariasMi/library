@@ -7,9 +7,9 @@ function Book (title,author,numberPages,isRead){
     this.isRead = isRead;        
 }
 
-const createBookfromForm =(e) =>{
-     e.preventDefault();
-      let book = {
+const getBookfromForm =() =>{
+       
+    let book = {
         title:document.getElementById('title').value,
         author:document.getElementById('author').value,
         numberPages: document.getElementById('pages').value,
@@ -18,6 +18,7 @@ const createBookfromForm =(e) =>{
        
     book.prototype = Object.create(Book.prototype); 
     addBookToLibrary(book);
+    saveLocalStorage();
     document.forms[0].reset();
     displayBooks();
 
@@ -25,6 +26,7 @@ const createBookfromForm =(e) =>{
 
 const addBookToLibrary = (bookObj)=>{
     myLibrary.push(bookObj);
+    
 
 }
 
@@ -33,62 +35,71 @@ const displayBooks = ()=>{
 }
 
 const saveLocalStorage =() =>{
-    return;
+    localStorage.setItem('myLibraryList', JSON.stringify(myLibrary));
 }
 
-const validateForm = ()=>{
-   const title = document.forms['form']['title'].value;
-   const author = document.forms['form']['author'].value;
-   const pages = document.forms['form']['pages'].value;
-   // if(title ==''){
-  // /     document.getElementById('title').style.borderColor = 'red';
-   // }
-}
+const validateForm = (e)=>{
+   const title = document.getElementById('title');
+   const author = document.getElementById('author');
+   const pages = document.getElementById('pages');
+   let error = false;
 
-let book1 = {
-    "title": "The Lord of the rings : Two towers",
-    "author": "R.R.Tolkien",
-    "numberPages": 352,
-    "isRead": true
-}
-let book2 = {
-    "title": "The Lord of the rings :return of the king ",
-    "author": "R.R.Tolkien",
-    "numberPages": 431,
-    "isRead": false
-   };
+   if(title.value == '' || title.value == null){
+       error = true;
+       title.style.borderBottom = ' dotted #ff0000';
+       title.placeholder = "you must to fill the title"
+   }
+   if(author.value == '' || title.value == null){
+       error = true;
+       author.style.borderBottom = ' dotted #ff0000';
+       author.placeholder = "you must to fill the author"
+   }
+   if(pages.value == '' || pages.value == null){
+        error = true;
+        pages.style.borderBottom = ' dotted #ff0000';
+        pages.placeholder = "you must to fill the pages"
+   }
 
-
-book1.prototype = Object.create(Book.prototype);
-book2.prototype = Object.create(Book.prototype);
-
-addBookToLibrary(book1);
-addBookToLibrary(book2);
-
-
+    if(!error){
+        e.preventDefault();
+        getBookfromForm();
+        title.style.borderBottom  = ' dotted #000000';
+        author.style.borderBottom = ' dotted #000000';
+        pages.style.borderBottom  = ' dotted #000000';
+        title.placeholder = "Title"
+        author.placeholder = "Author"
+        pages.placeholder = "Pages"
+    }
    
+}
 
-/*parte do dom */
 
 let formArea = document.getElementsByClassName('form-area')[0];
 let form = document.getElementById('book-form');
 
-
-function openAddBookForm(){
-    
-    formArea.style.display = 'block';
-
+function openAddBookForm(){      
+    formArea.style.display = 'block';   
 }
-
 function closeAddBookForm(){
     formArea.style.display = 'none';
 }
 
 
+const createGrid = () =>{
+    let myLibraryView = document.getElementById('library-view');
+
+    for (let i = 0; i<myLibrary.length;i++){
+        const bookCard = document.createElement('div');
+        bookCard.setAttribute('class','book-card');
+        bookCard.setAttribute('data-id',i);
+        
+
+
+    }
+}
+
     document.getElementById('add-book').addEventListener('click',openAddBookForm);
     document.getElementById('close-form').addEventListener('click',closeAddBookForm);
-    document.getElementById('add-form').addEventListener('click',createBookfromForm);
+    document.getElementById('add-form').addEventListener('click',validateForm);
 
 
-
-   
