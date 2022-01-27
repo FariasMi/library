@@ -1,6 +1,7 @@
 let myLibrary = [];
 
 function Book (title,author,numberPages,isRead){
+    this.id = id;
     this.title = title;
     this.author = author;
     this.numberPages = numberPages;
@@ -10,6 +11,7 @@ function Book (title,author,numberPages,isRead){
 const getBookfromForm =() =>{
        
     let book = {
+        id:Date.now(),
         title:document.getElementById('title').value,
         author:document.getElementById('author').value,
         numberPages: document.getElementById('pages').value,
@@ -24,18 +26,52 @@ const getBookfromForm =() =>{
 
 }
 
-const addBookToLibrary = (bookObj)=>{
-    myLibrary.push(bookObj);
+const addBookToLibrary = (book)=>{
+    myLibrary.push(book);
+    createBookGrid(book);
     
-
+    
 }
 
 const displayBooks = ()=>{
-    console.log(myLibrary);
+   console.log(myLibrary);
+   
 }
 
 const saveLocalStorage =() =>{
+    let myLibrary_collection = localStorage.getItem('myLibraryList');
     localStorage.setItem('myLibraryList', JSON.stringify(myLibrary));
+}
+
+
+const createBookGrid = (book) =>{
+    const libView   = document.getElementById('library-view');
+    const bookCard  = document.createElement('div');
+    const deleteBtn = document.createElement('btn');
+    const readBtn   = document.createElement('btn');
+    const title = document.createElement('h3');
+    const author = document.createElement('h3');
+    const pages = document.createElement('h3');
+
+    bookCard.classList.add('book-card');
+    readBtn.classList.add('btn','read-book');
+    deleteBtn.classList.add('btn','delete-book');
+    
+    deleteBtn.textContent = 'Delete book';
+    readBtn.textContent = 'Read';
+    title.textContent = `"${book.title}"`;
+    author.textContent = `"${book.author}"`;
+    pages.textContent = `"${book.numberPages}"`;
+    
+
+    libView.appendChild(bookCard);
+    bookCard.appendChild(deleteBtn);
+    bookCard.appendChild(readBtn);
+    bookCard.appendChild(title);
+    bookCard.appendChild(author);
+    bookCard.appendChild(pages);
+
+     
 }
 
 const validateForm = (e)=>{
@@ -73,7 +109,6 @@ const validateForm = (e)=>{
    
 }
 
-
 let formArea = document.getElementsByClassName('form-area')[0];
 let form = document.getElementById('book-form');
 
@@ -85,21 +120,10 @@ function closeAddBookForm(){
 }
 
 
-const createGrid = () =>{
-    let myLibraryView = document.getElementById('library-view');
-
-    for (let i = 0; i<myLibrary.length;i++){
-        const bookCard = document.createElement('div');
-        bookCard.setAttribute('class','book-card');
-        bookCard.setAttribute('data-id',i);
-        
-
-
-    }
-}
 
     document.getElementById('add-book').addEventListener('click',openAddBookForm);
     document.getElementById('close-form').addEventListener('click',closeAddBookForm);
     document.getElementById('add-form').addEventListener('click',validateForm);
 
 
+  
