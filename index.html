@@ -11,13 +11,14 @@
 </head>
 <body>
   <header>
-         <h1>Library</h1> 
+     <img class= 'logo'src="images/library.png" alt="books">
+     <h1>My Library</h1> 
   </header>
   
   <main>
     <section>
-       <button id="add-book"class="btn"><i class="fas fa-plus"></i></button>
-       <div class="form-area">
+      <button id="add-book"class="btn"><i class="fas fa-plus"></i></button>
+      <div class="form-area">
         <button id="close-form" class ="close btn">x</button>
         <form id="book-form" action="" >
           <input type="text" id="title" name="title" placeholder="Title" required />
@@ -27,12 +28,11 @@
             <label for="read">Mark as Read</label>
             <input type="checkbox" id=read name="read" unchecked>
           </div>
-          <button  class="btn" type="submit" form="form" id="add-form">Add</button>
+          <button  class="btn btn-action" type="submit" form="form" id="add-form">Add</button>
         </form>
       </div>
     </section>
     <section> <div id="library-view"></div></section>
-    
   </main>
     
 </body>

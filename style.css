@@ -10,7 +10,7 @@ html{
     scroll-behavior: smooth;
 }
 body{
-    background: linear-gradient(#9D50BB,#6E48AA,#4BC0C8);
+    background: linear-gradient(#7780f7,#0499fcfb,#0430f5f1);
     background-attachment: fixed;
 
 }
@@ -18,8 +18,11 @@ body{
 header{
     border: solid;
     width: 100%;
-    height: 50px;
-    margin: auto;
+    height: 200px;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
 }
 
 .form-area{
@@ -29,6 +32,7 @@ header{
     right: 0;
     bottom: 0;
     margin: auto;
+    margin-top: 20px;
     z-index:200;
     display: none;
     width: 30%;
@@ -91,14 +95,17 @@ header{
     outline: none;
     border:none;
     background: rgba(255,255,255,0.001);
+    box-shadow: 0 25px 45px rgba(0,0,0,0.5);
     cursor: pointer;
 }
 
-#add-form{
+.btn-action{
     margin-left: 20px;
     width: 80%;
     height: 60px;
     border-radius: 10px;
+    text-align: center;
+    padding: 20px;
 }
 
 .close{
@@ -124,11 +131,8 @@ header{
     
 }
 
-#ad-form,#add-book{
-    box-shadow: 0 25px 45px rgba(0,0,0,0.5);
-}
 
-#add-form:hover{
+.btn:hover{
     color : #ffffff;
     box-shadow: 5px 5px 30px rgba(0,0,0,0.5);
 }
@@ -145,14 +149,43 @@ header{
  }
 
 .book-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-content: center;
+    flex-wrap: wrap;
+    align-items: center;
     border:solid;
     height: 300px;
     width: 300px;
-
+    word-wrap: break-word;
+    word-break: break-all; 
    }
+.book-card{
+    box-shadow: 0 25px 45px rgba(0,0,0,0.1);
+    border: 1px solid rgba(255,255,255,0.5);
+    border-right: 1px solid (255,255,255,0.2);
+    border-bottom: 1px solid (255,255,255,0.2);
+    border-radius: 10px;
+}
 
-.delete-book{
-    height: 100px;
-    width: 100px;
-    
+h3{
+    font-weight: bolder;
+    font-size: 1.5em;
+}
+   
+.delete-book:hover{
+    color : #ffffff;
+    background-color: rgba(248, 8, 8, 0.644);
+        
+}
+
+h1{
+    font-size: 5em;
+    position: relative;
+    margin-right: 100px;
+}
+
+#library-view{
+
 }

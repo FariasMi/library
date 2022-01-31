@@ -8,6 +8,11 @@ function Book (title,author,numberPages,isRead){
     this.isRead = isRead;        
 }
 
+function deleteBook (book){
+    myLibrary.splice(myLibrary.findIndex(obj=>obj.id===book.id),1);
+    
+}
+
 const getBookfromForm =() =>{
        
     let book = {
@@ -47,32 +52,60 @@ const saveLocalStorage =() =>{
 const createBookGrid = (book) =>{
     const libView   = document.getElementById('library-view');
     const bookCard  = document.createElement('div');
-    const deleteBtn = document.createElement('btn');
-    const readBtn   = document.createElement('btn');
     const title = document.createElement('h3');
     const author = document.createElement('h3');
     const pages = document.createElement('h3');
+    const deleteBtn = document.createElement('btn');
+    const readBtn   = document.createElement('btn');
 
     bookCard.classList.add('book-card');
-    readBtn.classList.add('btn','read-book');
-    deleteBtn.classList.add('btn','delete-book');
+    bookCard.setAttribute('data-book',book.id);
+    readBtn.classList.add('btn','read-book','btn-action');
+    deleteBtn.classList.add('btn','delete-book','btn-action');
     
-    deleteBtn.textContent = 'Delete book';
-    readBtn.textContent = 'Read';
+    
     title.textContent = `"${book.title}"`;
-    author.textContent = `"${book.author}"`;
-    pages.textContent = `"${book.numberPages}"`;
+    author.textContent = book.author;
+    pages.textContent = book.numberPages;
+    deleteBtn.textContent = 'Remove';
+    readBtn.textContent = 'Read';
     
-
     libView.appendChild(bookCard);
-    bookCard.appendChild(deleteBtn);
-    bookCard.appendChild(readBtn);
     bookCard.appendChild(title);
     bookCard.appendChild(author);
     bookCard.appendChild(pages);
+    bookCard.appendChild(readBtn);
+    bookCard.appendChild(deleteBtn);
 
-     
+    if(book.isRead){
+        readBtn.style.backgroundColor = 'rgba(60, 179, 113,0.5)';
+    }else{
+        readBtn.style.backgroundColor = 'rgba(219,32,63,0.5)';
+        readBtn.textContent = 'Not read';
+    }   
+    
+    readBtn.addEventListener('click', ()=>{
+        if(book.isRead){
+            readBtn.style.backgroundColor = 'rgba(219,32,63,0.5)';
+            readBtn.textContent = 'Not read';
+            book.isRead = false;
+        }else{
+            readBtn.style.backgroundColor = 'rgba(60, 179, 113,0.5)';
+            readBtn.textContent = 'Read';
+            book.isRead = true;
+
+        }
+    });
+
+   deleteBtn.addEventListener('click',()=>{
+        deleteBook(book);
+        bookCard.remove();
+
+   })
+
 }
+
+
 
 const validateForm = (e)=>{
    const title = document.getElementById('title');
@@ -120,7 +153,7 @@ function closeAddBookForm(){
 }
 
 
-
+    
     document.getElementById('add-book').addEventListener('click',openAddBookForm);
     document.getElementById('close-form').addEventListener('click',closeAddBookForm);
     document.getElementById('add-form').addEventListener('click',validateForm);
