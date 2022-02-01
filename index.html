@@ -4,36 +4,38 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="icon/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="icon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="icon/favicon-16x16.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="stylesheet" href="style.css">
   <script defer src="script.js"></script>
-  <title>Library</title>
+  <title>My Library</title>
 </head>
 <body>
   <header>
-     <img class= 'logo'src="images/library.png" alt="books">
-     <h1>My Library</h1> 
-  </header>
+   <div class="logo-container"><img class='logo'src="images/books.png" alt="books"></div>
+    <h1>My Library</h1> 
+ </header>
   
-  <main>
-    <section>
-      <button id="add-book"class="btn"><i class="fas fa-plus"></i></button>
-      <div class="form-area">
-        <button id="close-form" class ="close btn">x</button>
-        <form id="book-form" action="" >
-          <input type="text" id="title" name="title" placeholder="Title" required />
-          <input type="text" id="author" name="author" placeholder="Author" required />
-          <input type="number" min= 0 id="pages" name="pages" placeholder="Pages" required />
-          <div class="check-read">
-            <label for="read">Mark as Read</label>
-            <input type="checkbox" id=read name="read" unchecked>
-          </div>
-          <button  class="btn btn-action" type="submit" form="form" id="add-form">Add</button>
-        </form>
-      </div>
-    </section>
-    <section> <div id="library-view"></div></section>
-  </main>
-    
+ <main>
+  <section>
+    <button id="add-book"class="btn"><i class="fas fa-plus"></i></button>
+    <div class="form-area">
+      <button id="close-form" class ="close">x</button>
+      <form id="book-form" action="" >
+        <input type="text" id="title" name="title" placeholder="Title" required />
+        <input type="text" id="author" name="author" placeholder="Author" required />
+        <input type="number" min= 0 id="pages" name="pages" placeholder="Pages" required />
+        <div class="check-read">
+          <label for="read">Mark as Read</label>
+          <input type="checkbox" id=read name="read" unchecked>
+        </div>
+        <button  class="btn btn-action" type="submit" form="form" id="add-form">Add</button>
+      </form>
+    </div>
+  </section>
+  <section> <div id="library-view"></div></section>
+</main>
 </body>
 </html>

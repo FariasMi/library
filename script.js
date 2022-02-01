@@ -25,7 +25,6 @@ const getBookfromForm =() =>{
        
     book.prototype = Object.create(Book.prototype); 
     addBookToLibrary(book);
-    saveLocalStorage();
     document.forms[0].reset();
     displayBooks();
 
@@ -33,7 +32,9 @@ const getBookfromForm =() =>{
 
 const addBookToLibrary = (book)=>{
     myLibrary.push(book);
+    saveLocalStorage(book);
     createBookGrid(book);
+    
     
     
 }
@@ -43,9 +44,15 @@ const displayBooks = ()=>{
    
 }
 
-const saveLocalStorage =() =>{
+const saveLocalStorage =(book)=>{
     let myLibrary_collection = localStorage.getItem('myLibraryList');
-    localStorage.setItem('myLibraryList', JSON.stringify(myLibrary));
+    console.log(myLibrary_collection);
+    if(myLibrary_collection == null){
+        localStorage.setItem('myLibraryList', JSON.stringify(myLibrary));
+    }else{
+        localStorage.setItem('myLibraryList', JSON.stringify(book));
+    }
+    
 }
 
 
@@ -145,15 +152,13 @@ const validateForm = (e)=>{
 let formArea = document.getElementsByClassName('form-area')[0];
 let form = document.getElementById('book-form');
 
-function openAddBookForm(){      
+function openAddBookForm(){    
     formArea.style.display = 'block';   
 }
 function closeAddBookForm(){
     formArea.style.display = 'none';
 }
-
-
-    
+   
     document.getElementById('add-book').addEventListener('click',openAddBookForm);
     document.getElementById('close-form').addEventListener('click',closeAddBookForm);
     document.getElementById('add-form').addEventListener('click',validateForm);
