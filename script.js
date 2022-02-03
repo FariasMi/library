@@ -8,7 +8,7 @@ function Book (title,author,numberPages,isRead){
     this.isRead = isRead;        
 }
 
-function deleteBook (book){
+const deleteBook = (book) =>{
     myLibrary.splice(myLibrary.findIndex(obj=>obj.id===book.id),1);
     
 }
@@ -22,40 +22,36 @@ const getBookfromForm =() =>{
         numberPages: document.getElementById('pages').value,
         isRead:document.getElementById('read').checked
     }
-       
-    book.prototype = Object.create(Book.prototype); 
-    addBookToLibrary(book);
-    document.forms[0].reset();
-    displayBooks();
-
+    let bookExists = verifyIfTheBookExists(book);
+    if(!bookExists){
+        book.prototype = Object.create(Book.prototype); 
+        addBookToLibrary(book);
+        document.forms[0].reset();
+        displayBooks();
+    }
+    
 }
 
 const addBookToLibrary = (book)=>{
     myLibrary.push(book);
     saveLocalStorage(book);
-    createBookGrid(book);
+    displayBooks(book);
     
     
     
 }
 
-const displayBooks = ()=>{
-   console.log(myLibrary);
+const displayBooks = (book)=>{
+    createBookGrid(book)
    
 }
 
 const saveLocalStorage =(book)=>{
-    let myLibrary_collection = localStorage.getItem('myLibraryList');
-    console.log(myLibrary_collection);
-    if(myLibrary_collection == null){
-        localStorage.setItem('myLibraryList', JSON.stringify(myLibrary));
-    }else{
-        localStorage.setItem('myLibraryList', JSON.stringify(book));
+        localStorage.setItem('myLibraryList',JSON.stringify(myLibrary));
+
     }
-    
-}
-
-
+ 
+   
 const createBookGrid = (book) =>{
     const libView   = document.getElementById('library-view');
     const bookCard  = document.createElement('div');
@@ -66,7 +62,6 @@ const createBookGrid = (book) =>{
     const readBtn   = document.createElement('btn');
 
     bookCard.classList.add('book-card');
-    bookCard.setAttribute('data-book',book.id);
     readBtn.classList.add('btn','read-book','btn-action');
     deleteBtn.classList.add('btn','delete-book','btn-action');
     
@@ -108,11 +103,43 @@ const createBookGrid = (book) =>{
         deleteBook(book);
         bookCard.remove();
 
-   })
+   });
 
 }
 
+const verifyIfTheBookExists = (book) =>{
+    let found = {};
+    myLibrary.forEach((bookInLibrary)=>{
+        if(bookInLibrary.name ===book.name){
+            found = bookInLibrary;
+            console.log(found);
+        }
+    });
 
+    if(found.title && found.author === book.title && book.author){
+        alert('Hey! This book already exists');
+        return true;
+    }
+      return false;
+
+}
+const getBooksFromLocalStorage = ()=>{
+    let jsonFromLocalStorage = localStorage.getItem('myLibraryList');
+    if(jsonFromLocalStorage != null){
+        for(i=0;i<jsonFromLocalStorage.length;i++){
+            myLibrary = JSON.parse(jsonFromLocalStorage);
+        }
+    }
+}
+
+const displayBooksThatAlreadyExist = ()=>{
+    if(myLibrary.length != null){
+        for(i=0;i<myLibrary.length;i++){
+            createBookGrid(myLibrary[i])
+        }
+    }
+       
+}
 
 const validateForm = (e)=>{
    const title = document.getElementById('title');
@@ -152,13 +179,14 @@ const validateForm = (e)=>{
 let formArea = document.getElementsByClassName('form-area')[0];
 let form = document.getElementById('book-form');
 
-function openAddBookForm(){    
+const openAddBookForm = ()=>{    
     formArea.style.display = 'block';   
 }
-function closeAddBookForm(){
+const closeAddBookForm =()=>{
     formArea.style.display = 'none';
 }
-   
+    getBooksFromLocalStorage();
+    displayBooksThatAlreadyExist();
     document.getElementById('add-book').addEventListener('click',openAddBookForm);
     document.getElementById('close-form').addEventListener('click',closeAddBookForm);
     document.getElementById('add-form').addEventListener('click',validateForm);
