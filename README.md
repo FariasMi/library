@@ -1,7 +1,7 @@
 # Library
 It's a project from  The [Odin project](https://www.theodinproject.com/paths/full-stack-javascript/courses/javascript/lessons/library).
 
-## Tecnologies learned
+## Technologies learned
 - HTML
 - CSS
 - Javascript
