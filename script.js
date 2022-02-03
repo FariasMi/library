@@ -42,7 +42,7 @@ const addBookToLibrary = (book)=>{
 }
 
 const displayBooks = (book)=>{
-    createBookGrid(book)
+    createBookGrid(book);
    
 }
 
@@ -113,7 +113,7 @@ const verifyIfTheBookExists = (book) =>{
    const found_books= myLibrary.filter(objBook => objBook.title === book.title &&  objBook.author === book.author);
         
    if(Object.keys(found_books).length !=0 ){
-        alert('Hey this book alread exists');
+        alert('Hey,this book alread exists!');
         return true;      
    }
        return false;

@@ -1,14 +1,14 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300&family=Patrick+Hand&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300&family=IBM+Plex+Sans+Thai+Looped&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Supermercado+One&display=swap');
 
 *{
     margin:0;
     padding:0;
     box-sizing: border-box;
-    font-family:"Poppins,sans-serif";
-    font-size: 15px;
+    font-family: 'Dongle', sans-serif;
+    font-size: 10px;
    
 }
 html{
@@ -17,7 +17,7 @@ html{
 body{
     background: linear-gradient(#90afc5,#0499fcfb);
     background-attachment: fixed;
-    font-family: 'IBM Plex Sans Thai Looped', sans-serif;
+
 
 }
 
@@ -42,8 +42,8 @@ header{
     margin-top: 20px;
     z-index:200;
     display: none;
-    width: 30%;
-    height: 30rem;
+    width:35%;
+    height: 600px;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(8px);
     background: rgba(255,255,255,0.1);
@@ -52,18 +52,15 @@ header{
     border: 1px solid rgba(255,255,255,0.5);
     border-right: 1px solid (255,255,255,0.2);
     border-bottom: 1px solid (255,255,255,0.2);
-   
 
-    
 }
+
 .form-area form{
     width: 80%;
     height: 400px; 
     margin: 0px auto; 
     margin-top: 50px;
-
-}
-
+  }
 
 .form-area form input{
     width: 80%;
@@ -76,13 +73,14 @@ header{
     margin:20px;
     border-right: 1px solid (255,255,255,0.2);
     border-bottom: 1px solid (255,255,255,0.2);
-    
-
-
+    font-family: 'Dongle', sans-serif;
+    font-size: 4rem;
 }
 
 #book-form ::placeholder{
-    color: #f0efef;
+    color: #000000;
+    font-size:3rem;
+    font-weight: bolder;
 }
 
 .check-read{
@@ -92,14 +90,21 @@ header{
     align-items:center;
     position: relative;
     margin:20px 20px ;
-   
+    
+}
+.check-read label{
+   font-size:2.5rem;
+    font-weight: bolder;
 }
 
 .check-read input[type="checkbox"]{
     margin-left: -110px;
 
 }
+.check-read input[type="checkbox"]{
+    margin-left: -110px;
 
+}
     
 .btn{
     outline: none;
@@ -107,15 +112,21 @@ header{
     background: rgba(255,255,255,0.001);
     box-shadow: 0 25px 45px rgba(0,0,0,0.5);
     cursor: pointer;
-}
-
-.btn-action{
-    margin-left: 20px;
+    font-family: 'Dongle', sans-serif;
+    font-size: 2.5rem;
+    text-align: center;
+    font-weight: bolder;
     width: 80%;
     height: 60px;
     border-radius: 10px;
+    
+ 
+}
+
+form button{
     text-align: center;
-    padding: 20px;
+    display: block;
+    margin: 0 auto;
 }
 
 .close{
@@ -141,9 +152,16 @@ header{
     bottom:20px;
     right: 50px;
     
+        
 }
 
+.fa-plus{
+    font-size: 2.5rem;
+    width: 80%;
+    line-height: 50px;
 
+    
+}
 .btn:hover{
     color : #ffffff;
     box-shadow: 5px 5px 30px rgba(0,0,0,0.5);
@@ -187,8 +205,9 @@ header{
 }
 
 h3{
-    font-size: 2.2em;
-    font-family: 'Dongle', sans-serif;
+    font-size: 2.5rem;
+    text-align: center;
+    
 }
    
 .delete-book:hover{
@@ -198,7 +217,7 @@ h3{
 }
 
 h1{
-    font-size: 6em;
+    font-size: 10rem;
     position: relative;
     margin-right: 100px;
     font-family: 'Great Vibes';
@@ -225,13 +244,10 @@ main{
     max-width:100%;
     max-height:100%;    
 }
-.read-book{
+.read-book,.delete-book{
     margin-bottom: 5px;
     height: 50px;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
 }
-
-.delete-book{
-    height: 50px;
-    margin-bottom: 5px;
-}
-
