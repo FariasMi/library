@@ -7,4 +7,4 @@ It's a project from  The [Odin project](https://www.theodinproject.com/paths/ful
 - Javascript
 - Local Storage Manipulation
 
-You can see the finish project [here](https://fariasmi.github.io/library/)
+You can see the finished project [here](https://fariasmi.github.io/library/)
