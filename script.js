@@ -1,11 +1,14 @@
 let myLibrary = [];
+class Book{
+    constructor (id,title,author,numberPages,isRead){
+        this.id = id;
+        this.title = title;
+        this.author = author;
+        this.numberPages = numberPages;
+        this.isRead = isRead;        
+    }
 
-function Book (title,author,numberPages,isRead){
-    this.id = id;
-    this.title = title;
-    this.author = author;
-    this.numberPages = numberPages;
-    this.isRead = isRead;        
+
 }
 
 const deleteBook = (book) =>{
@@ -13,18 +16,18 @@ const deleteBook = (book) =>{
     
 }
 
+
 const getBookfromForm =() =>{
-       
-    let book = {
-        id:Date.now(),
-        title:document.getElementById('title').value,
-        author:document.getElementById('author').value,
-        numberPages: document.getElementById('pages').value,
-        isRead:document.getElementById('read').checked
-    }
+        
+    let id = Date.now(); 
+    let title = document.getElementById('title').value;
+    let author = document.getElementById('author').value;
+    let numberPages = document.getElementById('pages').value;
+    let isRead = document.getElementById('read').checked;
+    let book = new Book(id,title,author,numberPages,isRead);
+
     let bookExists = verifyIfTheBookExists(book);
     if(!bookExists){
-        book.prototype = Object.create(Book.prototype); 
         addBookToLibrary(book);
         document.forms[0].reset();
         
